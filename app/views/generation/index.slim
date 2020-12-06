@@ -1,6 +1,21 @@
 h1 File Upload
 = form_tag({ action: :upload_file }, multipart: true)
   p
-    <label for='upload_file'>Select File</label>
+    <label for='upload_file'>Html file with text</label>
     = file_field 'upload', 'datafile'
-  = submit_tag 'Upload'
+  / = submit_tag 'Upload'
+  br
+  input checked="" name="method" type="radio" value="default" /
+  label
+    | Sentence extraction
+  br
+  input name="method" type="radio" value="ml" /
+  label
+    | ML
+  br
+  br
+  button type='submit' Detect
+
+- if @abstract
+    a href="file:#{Dir.pwd  + '/' + @abstract}"
+      = @abstract

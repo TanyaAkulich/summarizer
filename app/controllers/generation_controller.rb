@@ -6,7 +6,8 @@ class GenerationController < ApplicationController
       file: params.require(:upload)[:datafile].tempfile,
       file_name: params.require(:upload)[:datafile].original_filename
     )
-    @abstract = AbstractService.build(file.id).call
+    @abstract = AbstractService.build(file.id, params[:method]).call
+    render :index
   end
 
   def generate_abstract
